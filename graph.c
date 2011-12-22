@@ -30,7 +30,7 @@ void graph_delete(graph_t *graph) {
 	free(graph);
 }
 
-static int graph_depth_first_search_real(graph_t *graph, int node, bool *visits, int *prevs, int (*cb)(graph_t *graph, int node, void *user_data), void *user_data) {
+static int graph_depth_first_srch_real(graph_t *graph, int node, bool *visits, int *prevs, int (*cb)(graph_t *graph, int node, void *user_data), void *user_data) {
 	int i;
 	int res;
 
@@ -40,14 +40,14 @@ static int graph_depth_first_search_real(graph_t *graph, int node, bool *visits,
 	for (i=0;i<graph->node_cnt;i++) {
 		if (graph->dists[node][i] && !visits[i]) {
 			prevs[i] = node;
-			graph_depth_first_search_real(graph, i, visits, prevs, cb, user_data);
+			graph_depth_first_srch_real(graph, i, visits, prevs, cb, user_data);
 		}
 	}
 
 	return 0;
 }
 
-int graph_depth_first_search(graph_t *graph, int st_node, int **prevs, int (*cb)(graph_t *graph, int node, void *user_data), void *user_data) {
+int graph_depth_first_srch(graph_t *graph, int st_node, int **prevs, int (*cb)(graph_t *graph, int node, void *user_data), void *user_data) {
 	int i;
 
 	bool *visits = (bool*)malloc(sizeof(bool)*graph->node_cnt);
@@ -58,7 +58,7 @@ int graph_depth_first_search(graph_t *graph, int st_node, int **prevs, int (*cb)
 		new_prevs[i] = -1;
 	}
 
-	int res = graph_depth_first_search_real(graph, st_node, visits, new_prevs, cb, user_data);
+	int res = graph_depth_first_srch_real(graph, st_node, visits, new_prevs, cb, user_data);
 
 	if (prevs) *prevs = new_prevs;
 	else free(new_prevs);

@@ -41,7 +41,7 @@ err:
 	return NULL;
 }
 
-static int depth_first_search_visit(graph_t *graph, int node, void *user_data) {
+static int depth_first_srch_visit(graph_t *graph, int node, void *user_data) {
 	printf("%d ", node);
 	return 0;
 }
@@ -59,7 +59,7 @@ void process(graph_t *graph) {
 
 	static const int st_node = 0;
 
-	graph_depth_first_search(graph, st_node, &prevs, depth_first_search_visit, NULL);
+	graph_depth_first_srch(graph, st_node, &prevs, depth_first_srch_visit, NULL);
 	putchar('\n');
 
 	int ed_node;

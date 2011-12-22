@@ -7,4 +7,4 @@ typedef struct {
 
 extern graph_t *graph_create(int size);
 extern void graph_delete(graph_t *graph);
-extern int graph_depth_first_search(graph_t *graph, int st_node, int **prevs, int (*cb)(graph_t *graph, int node, void *user_data), void *user_data);
+extern int graph_depth_first_srch(graph_t *graph, int st_node, int **prevs, int (*cb)(graph_t *graph, int node, void *user_data), void *user_data);

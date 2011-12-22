@@ -1,4 +1,4 @@
-NAME = depth-first-search
+NAME = depth-first-srch
 OBJS = main.o graph.o
 
 CFLAGS = -Wall -Werror
